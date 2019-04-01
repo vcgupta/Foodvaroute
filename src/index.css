@@ -12,3 +12,73 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+
+
+.fav-item {
+
+  margin-right: 10px;
+
+}
+.fav-items{
+  overflow-x: scroll;
+    overflow-y: hidden;
+    height: 325px;
+    display: flex;
+}
+
+
+.fav-img img {
+  height: 163px;
+  width: 162px;
+}
+.categories{
+  display: flex;
+  overflow-x: scroll;
+}
+.category{
+  
+  display: inline-flex;
+  margin-right: 10px;
+
+}
+.category img {
+  height: 40px;
+  width: 40px;
+}
+
+.header-title h2{
+  font-size: 14px;
+    display: inline-block;
+    float: left;
+}
+.category span{
+  display: block;
+    white-space: nowrap;
+}
+.clear{
+  clear: both;
+}
+.category:hover{
+  background-color: beige;
+}
+
+
+
+.filter-item {
+
+  margin-right: 10px;
+
+}
+.filter-items{
+  overflow-x: scroll;
+    overflow-y: hidden;
+    height: 325px;
+    display: flex;
+}
+
+
+.filter-img img {
+  height: 163px;
+  width: 162px;
+}
