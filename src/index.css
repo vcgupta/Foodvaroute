@@ -18,7 +18,22 @@ code {
 .fav-item {
 
   margin-right: 10px;
-
+  display: flex;
+  flex-wrap: wrap;
+}
+.fav-shortdetails { 
+  display: flex;
+  flex-wrap: wrap;
+}
+.order-button {
+  align-self: flex-end;
+  width:100%;
+}
+.category.selected {
+  background-color: dodgerblue;
+}
+button.btn.order {
+  width: 100%;
 }
 .fav-items{
   overflow-x: scroll;

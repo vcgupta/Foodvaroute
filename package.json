@@ -14,7 +14,8 @@
     "redux": "^4.0.1",
     "redux-thunk": "^2.3.0",
     "transcript": "0.0.6",
-    "typescript": "^3.4.1"
+    "typescript": "^3.4.1",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -32,6 +33,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "@types/react-redux": "^7.0.6"
+    "@types/react-redux": "^7.0.6",
+    "@types/uuid": "^3.4.4"
   }
 }
