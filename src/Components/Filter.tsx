@@ -19,15 +19,17 @@ export class Filter extends React.Component<ICategoryProps, IFilterState> {
         }
     }
     componentWillMount() {
-        if (!this.state.selectedCategoryId && this.props.categoryList.length > 0) {
+       
+    }
+
+    render() {
+        const currentCat = this.props.categoryList.find(category =>  category.id === this.state.selectedCategoryId);
+
+        if ((!this.state.selectedCategoryId || !currentCat) && this.props.categoryList.length > 0) {
             this.setState({
                 selectedCategoryId: this.props.categoryList[0].id
             });
         }
-    }
-
-    render() {
-        console.log("Able to access cat here", this.props.categoryList);
 
         const categories = this.props.categoryList.map(category => {
             //onClick={this.onCategoryChange.bind(category)}
@@ -39,7 +41,8 @@ export class Filter extends React.Component<ICategoryProps, IFilterState> {
             return (<div className={className} key={category.name} onClick={onClickCallback}>
                 <img src={category.image} /><span>{category.name}</span>
             </div>);
-        })
+        });
+
 
         return <div className="filter">
             <div className="header-title"><h2>SELECT CATEGORIES</h2>
@@ -55,7 +58,6 @@ export class Filter extends React.Component<ICategoryProps, IFilterState> {
     }
 
     onCategoryChange(item: ICategories) { 
-        console.log("Category changed to ", this, item, arguments);
         this.setState({
             selectedCategoryId: item.id
         });

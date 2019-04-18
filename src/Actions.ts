@@ -1,5 +1,5 @@
 import { IRecipes, ICategories } from "./dataDefinitions";
-import { SET_CATEGORIES, SET_RECIPES, ADD_TO_CART } from "./constants";
+import { SET_CATEGORIES, SET_RECIPES, ADD_TO_CART, REMOVE_FROM_CART } from "./constants";
 
 export interface ISetCategoryAction {
     categories: ICategories[],
@@ -14,8 +14,12 @@ export interface IAddToCartAction {
     quantity: number,
     type: string
 }
+export interface IRemoveFromCartAction {
+    recipeId: string,
+    type: string
+}
 
-export type IAction = ISetCategoryAction | ISetRecipesAction | IAddToCartAction;
+export type IAction = ISetCategoryAction | ISetRecipesAction | IAddToCartAction | IRemoveFromCartAction;
 
 export function setCategories(categories: ICategories[]): ISetCategoryAction {
     return {
@@ -34,6 +38,13 @@ export function updateCart(recipeId: string, quantity: number): IAddToCartAction
         recipeId,
          quantity,
         type: ADD_TO_CART
+    }
+}
+
+export function removeFromCart(recipeId: string): IRemoveFromCartAction {
+    return {
+        recipeId,
+        type: REMOVE_FROM_CART
     }
 }
 

@@ -5,16 +5,21 @@ import { func } from 'prop-types';
 import  {  updateCart , IAction } from '../Actions';
 import { Dispatch } from 'redux';
 import { connect } from 'react-redux';
+import OrderButtons from './OrderButtons';
 
 export interface IFavoriteItemProps{
     recipe: IRecipes,
+    isFavoriteList: boolean,
     quantity?: number,
+    //isFavorite:boolean,
     reorder?:(curQuantity:number)=>void
 }
 class FavoriteItem extends React.Component<IFavoriteItemProps>{
 
     public static defaultProps ={
-        quantity: 0
+        isFavoriteList: false,
+        quantity: 0,
+        isFavorite: false
     }
      
     constructor(props: IFavoriteItemProps) {
@@ -32,9 +37,7 @@ class FavoriteItem extends React.Component<IFavoriteItemProps>{
                     <div className="name">{this.props.recipe.name}</div>
                     <div className="price">{this.props.recipe.price}</div>
                 </div>
-                <div className="order-button">
-                    <button className="btn order" onClick={this.reorder}>REORDER</button>
-                </div>
+                <OrderButtons isFavourite={this.props.isFavoriteList} recipeId={this.props.recipe.id} />
             </div>
         </div>
     }
@@ -49,6 +52,7 @@ function mapStateToProps(state: IStoreState, ownProps: IFavoriteItemProps){
     if(state.cartItems[ownProps.recipe.id]){
         props.quantity = state.cartItems[ownProps.recipe.id].quantity;
     }
+     
     return props;
 }
 

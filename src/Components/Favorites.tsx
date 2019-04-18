@@ -14,10 +14,9 @@ export interface IFavoriteProps {
 class Favorites extends React.Component<IFavoriteProps>{
 
     render() {
-        console.log("In FV", this.props.favoriteList);
         const favItems = this.props.favoriteList!
             .map(recipe => {
-                return <FavoriteItem recipe={recipe} key={recipe.id} />
+                return <FavoriteItem isFavoriteList={true} recipe={recipe} key={recipe.id} />
             })
         return <div className="favourites">
             <div className="header-title"><h2>FAVORITES</h2>

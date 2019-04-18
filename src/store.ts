@@ -1,7 +1,7 @@
 import {IStoreState} from './dataDefinitions'
 import { createStore } from 'redux';
-import { IAction, ISetCategoryAction, ISetRecipesAction, IAddToCartAction } from './Actions';
-import { SET_CATEGORIES, SET_RECIPES, ADD_TO_CART } from './constants';
+import { IAction, ISetCategoryAction, ISetRecipesAction, IAddToCartAction, IRemoveFromCartAction } from './Actions';
+import { SET_CATEGORIES, SET_RECIPES, ADD_TO_CART, REMOVE_FROM_CART } from './constants';
 
 
 export const initialState: IStoreState = {
@@ -11,7 +11,6 @@ export const initialState: IStoreState = {
 }
 
 function rootReducer(state = initialState, action:IAction) {
-    console.log(state, action);
     if(action.type === SET_CATEGORIES){
         const myAction = action as ISetCategoryAction
         return {
@@ -36,6 +35,17 @@ function rootReducer(state = initialState, action:IAction) {
                     id: addToCartAction.recipeId
                 }
             }
+        }
+    }
+    else if(action.type == REMOVE_FROM_CART){
+        const removeFromCartAction = action as IRemoveFromCartAction
+        const newCart = {
+            ...state.cartItems
+        };
+        delete newCart[removeFromCartAction.recipeId];
+        return {
+            ...state,
+            cartItems : newCart
         }
     }
     return state;

@@ -2,6 +2,7 @@ import React from "react";
 import { IRecipes, IStoreState } from "../dataDefinitions";
 import { IAction } from "../Actions";
 import { connect } from "react-redux";
+import FavoriteItem from "./FavoriteItem";
 
 export interface IFilteredItems {
     recipeList?: IRecipes[],
@@ -13,37 +14,35 @@ export class FilteredItems extends React.Component<IFilteredItems>{
         if (this.props.recipeList && this.props.recipeList.length > 0) {
             const filteredItems = this.props.recipeList!//.filter(recipe => recipe.isFavourite)
                 .map(recipe => {
-                    //return <FavoriteItem recipe={recipe} />
-                    return this.filteredItemRenderer(recipe);
+                    return <FavoriteItem isFavoriteList={false} recipe={recipe} key={recipe.id} />
+                    //return this.filteredItemRenderer(recipe);
                 });
 
             return <div className="filtered-Data">
-
                 <div className="filter-items"> {filteredItems} </div>
-
             </div>
         } else {
-            return <div className="filtered-Data is-empty" >No</div>
+            return <div className="filtered-Data is-empty" >No item available</div>
         }
     }
 
 
-    filteredItemRenderer(recipe: IRecipes) {
-        return (<div className="filter-item" key={recipe.name}>
-            <div className="filter-img">
-                <img src={recipe.image} alt={recipe.name} />
-            </div>
-            <div className="filter-shortdetails">
-                <div className="name-price">
-                    <div className="name">{recipe.name}</div>
-                    <div className="price">{recipe.price}</div>
-                </div>
-                <div className="order-button">
-                    <button className="btn order">ADD TO BAG</button>
-                </div>
-            </div>
-        </div>);
-    }
+    // filteredItemRenderer(recipe: IRecipes) {
+    //     return (<div className="filter-item" key={recipe.name}>
+    //         <div className="filter-img">
+    //             <img src={recipe.image} alt={recipe.name} />
+    //         </div>
+    //         <div className="filter-shortdetails">
+    //             <div className="name-price">
+    //                 <div className="name">{recipe.name}</div>
+    //                 <div className="price">{recipe.price}</div>
+    //             </div>
+    //             <div className="order-button">
+    //                 <button className="btn order">ADD TO BAG</button>
+    //             </div>
+    //         </div>
+    //     </div>);
+    // }
 }
 
 

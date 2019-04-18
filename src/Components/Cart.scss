@@ -1,0 +1,42 @@
+@import 'src/variables.scss';
+
+img.cart-image {
+    width: 85px;
+    height: 85px;
+}
+
+span.item-name {
+    font-size: 19px;
+    font-weight: 600;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+.cart-item {
+    /* width: 215px; */
+    DISPLAY: FLEX;
+    FLEX-WRAP: nowrap;
+}
+
+.order-calculation {
+    /* display: flex; */
+    align-self: right;
+    right: 10px;
+    position: absolute;
+    width: 80px;
+}
+
+.cart .order-buttons {
+    /* flex-wrap: inherit; */
+    position: absolute;
+    right: 70px;
+    width: 100px;
+}
+
+.order-buttons button {
+    margin: 4px;
+    color: $primaryButtonColor
+}
+.fav-item .order-buttons{    
+    align-self: flex-end;
+}
