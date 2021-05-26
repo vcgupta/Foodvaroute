@@ -1,4 +1,4 @@
-# This is a basic workflow to help you get started with Actions
+l./# This is a basic workflow to help you get started with Actions
 
 name: CI
 
@@ -31,4 +31,4 @@ jobs:
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: linchpin/action-build-yarn-npm@master
+        run: npm run build
